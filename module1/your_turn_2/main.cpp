@@ -17,6 +17,14 @@
  *			Return that the guess was just right!
  *
  *     Graceful close.
+ *
+ *  Integrity Statement:
+ *  
+ *  I certify that this assignment represent my own work.
+ *  I have not used any unauthorized or unacknoledged assistance
+ *  or sources in completing it, including free or commercial
+ *  systems or services offered on the internet or code-generating
+ *  systems embedded into software.
 */
 #include <iostream>
 #include <cstdlib>
@@ -27,6 +35,7 @@ int main() {
 	// Declare variables
 	int guess;
 	int diff;
+	bool userInputSuccessful;
 
 	// set the seed to be random
 	srand(time(0));
@@ -34,15 +43,18 @@ int main() {
 	// Get the user input.
 	cout << "Welcome!\n";
 	cout << "Enter a number between 1 and 10 and see if you get it right!\n>> ";
-	cin >> guess;
+	if (!(cin >> guess)) {
+		cout << "Invalid input, please enter a number between 1 and 10.\n";
+		return -1;
+	}
 
 	cout << guess << endl;
 
 	if (guess > 10) {
-		cout << "That's too high.\n";
+		cout << "Invalid input, " << guess << " is too high.\n";
 		return -1;
 	} else if (guess < 1) {
-		cout << "That's too low.\n";
+		cout << "Invalid input, " << guess << " is too low.\n";
 		return -1;
 	}
 

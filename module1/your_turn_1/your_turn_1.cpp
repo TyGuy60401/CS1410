@@ -5,12 +5,20 @@
  *
  *
  * Pseudo code:
- * Request input from user.
- * Store input into variables.
- * Check user input for errors.
- * Repeat input to user.
- * Calculate final cost of car.
- * Print final cost of car to the user.
+ *    Request input from user.
+ *    Store input into variables.
+ *    Check user input for errors.
+ *    Repeat input to user.
+ *    Calculate final cost of car.
+ *    Print final cost of car to the user.
+ *
+ *  Integrity Statement:
+ *  
+ *  I certify that this assignment represent my own work.
+ *  I have not used any unauthorized or unacknoledged assistance
+ *  or sources in completing it, including free or commercial
+ *  systems or services offered on the internet or code-generating
+ *  systems embedded into software.
 */
 #include <iostream>
 using namespace std;
@@ -25,7 +33,16 @@ int main() {
 
 	// get the input from the user
 	cout << "Enter the four values of the car price in this order:\nBase price\nAdditional price for options\nSales tax\nLicensing Fees\n>> ";
-	cin >> basePrice >> optionsPrice >> salesTax >> licensingFees;
+	if (!(cin >> basePrice >> optionsPrice >> salesTax >> licensingFees)) {
+		cout << "Bad input. Please try again." << endl;
+		return -1;
+
+	}
+
+	if (basePrice < 0 || optionsPrice < 0 || salesTax < 0 || licensingFees < 0) {
+		cout << "You must provide all positive numbers." << endl;
+		return -1;
+	}
 
 	// print out the values to the user to confirm the input
 	cout.precision(2);
