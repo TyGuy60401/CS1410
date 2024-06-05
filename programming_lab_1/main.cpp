@@ -9,10 +9,21 @@
  * Initialize the variables
  * Do
  *	Try
- *		Prompt the user for input
+ *		Prompt the user for input stored as size
  *		validate the input
  *		throw any errors if necessary
- *		If nothing is bad, display the given input and the room size.
+ *		If nothing is bad, display the tree.
+ *		Displaying the tree:
+ *			size = user input
+ *			level = 0
+ *			while size - level > 0: // drawing the cone
+ *				print '	' size times
+ *				print '/'
+ *				print ' ' size * 2 times
+ *				print '\'
+ *			print '-' size * 2 times // drawing the bottom of the cone
+ *			print '     ||' size / 2 times
+ *			
  *	Catch
  *		string errors: print bad string
  *		number errors: print bad number
@@ -31,16 +42,19 @@
 */
 #include <ios>
 #include <iostream>
+#include <climits>
 using namespace std;
 
 int main() {
 	unsigned int size;
 	unsigned int level = 0;
+	int i;
 	bool valid = true;
 	cout << "Welcome!" << endl;
 
 	do {
 		cout << "Enter the size of the Christmas tree (3-15): ";
+		string errString = "Input could not be processed as a number.";
 
 		try {
 			valid = true;
@@ -48,14 +62,13 @@ int main() {
 			cin >> size;
 
 			if (!cin) {
-				throw "Input could not be processed as a number";
+				throw errString;
 			} else if (size < 3 || size > 15) {
 				throw size;
 			}
-			cout << size << endl;
 
-			int i;
-			while (size - level > 0) {
+			// nothing thrown, let's draw the tree
+			while (size - level > 0) { // drawing the cone
 				for (i = 0; i < size - level - 1; i++) {
 					cout << " ";
 				} 
@@ -66,14 +79,14 @@ int main() {
 				cout << "\\" << endl;
 				level ++;
 			}
-			for (i = 0; i < size * 2; i++) {
+			for (i = 0; i < size * 2; i++) { // drawing the line underneath the cone
 				cout << "-";
 			}
 			cout << endl;
 
-			for (i = 0; i < size / 2; i++) {
+			for (i = 0; i < size / 2; i++) { // drawing the trunk
 				int j;
-				for (j = 0; j < size - 1; j++) {
+				for (j = 0; j < size - 1; j++) { // spacing the trunk
 					cout << " ";
 				}
 				cout << "||" << endl;
