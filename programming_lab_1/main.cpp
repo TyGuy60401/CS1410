@@ -1,8 +1,8 @@
 /*
  * Name: Ty Davis
- * Desc: Your turn 4
- * Program prompts the user for the length and width
- * of the room and outputs the area of the room.
+ * Desc: Programming Lab 1
+ * Program prompts the user for size of a christmas tree
+ * and then prints out a Christmas tree
  *     
  *
  * Pseudocode:
@@ -21,6 +21,7 @@
  *				print '/'
  *				print ' ' size * 2 times
  *				print '\'
+ *				level ++
  *			print '-' size * 2 times // drawing the bottom of the cone
  *			print '     ||' size / 2 times
  *			
@@ -31,6 +32,7 @@
  * ... while (not valid)
  *
  *	
+ *	Test cases are found in the combineds notes.md file
  *
  *  Integrity Statement:
  *  
