@@ -1,6 +1,6 @@
 /*
  * Name: Ty Davis
- * Desc: Your turn 2
+ * Desc: Your turn 5.12 - vectors
  *     Get a list of prime day deals from the user and
  *     then find the cheapest item in the array and show
  *     the location in the array that it takes.
@@ -17,6 +17,8 @@
  * Print out the results.
  *
  * Graceful close.
+ *
+ * Test cases are provided in the accompanying nodes.md file
  *
  * Integrity Statement:
  *  
@@ -36,17 +38,20 @@ int main() {
 	// Declaring variables
 	vector<double> prices;
 	double tempPrice;
-
-	// bool valid;
 	int numPrices = 0;
+	double lowestPrice;
+	double sum;
+	int lowestPriceIndex;
 
 	string errString = "Input could not be processed as a number.";
+	cout << "Welcome to the Amazon Prime Day Deal tracker." << endl;
+	cout << "Input your prices one at a time (at least 5) and I'll" << endl;
+	cout << "tell you what your best deal was!" << endl;
 
 	// fill the prices vector
 	while (true) {
 		try {
-			// valid = true;
-			cout << "Next price: ";
+			cout << "Next price (0 to end): ";
 			cin >> tempPrice;
 			if (!cin) {
 				throw errString;
@@ -67,18 +72,34 @@ int main() {
 			cin.clear();
 			cin.ignore(INT_MAX, '\n');
 
-			cout << "Error: " << err << endl << endl;
-			// valid = false;
+			cout << "Error: " << err << endl << "Please try again." << endl;
 		} catch (double err) {
-			cout << "Error: " << err << " is not a positive number." << endl << endl;
+			cout << "Error: " << err << " is not a positive number." << endl << "Please try again." << endl;
 		} catch (int err) {
-			cout << "Error: " << "You've only input " << err << " numbers, input at least 5." << endl << endl;
+			cout << "Error: " << "You've only input " << err << " numbers, input at least 5." << endl << "Please try again." << endl;
 		}
 	}
 
-	for (int i = 0; i < numPrices; i++) {
-		cout << prices.at(i) << endl;
+	lowestPrice = prices.at(0);
+	lowestPriceIndex = 0;
+	sum = lowestPrice;
+
+	for (int i = 1; i < numPrices; i++) {
+		sum += prices.at(i);
+		if (prices.at(i) < lowestPrice) {
+			lowestPrice = prices.at(i);
+			lowestPriceIndex = i;
+		}
 	}
+	cout.precision(2);
+	cout << "The lowest price listed was $" << fixed << lowestPrice;
+	cout << " at index " << lowestPriceIndex << "." << endl;
+	cout << "What a deal!" << endl << endl;
+
+	cout << "The total cost of all the given prices was $" << sum << "." << endl;
+
+	cout << "Thanks for using the Amazon Prime Day Deal tracker. Come again!" << endl;
+
 
 
 	return 0;
