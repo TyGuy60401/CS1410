@@ -15,10 +15,6 @@
  * Output for the first friend
  * Output for the second friend
  * 
- * 
- * Iterate over the list keep track of the lowest price item and its position
- * Print out the results.
- *
  * Graceful close.
  *
  * Test cases are provided in the accompanying nodes.md file
