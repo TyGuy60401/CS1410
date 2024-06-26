@@ -33,4 +33,9 @@ Some example additions:
 | 10 14 9        | 10 3 15        | Enter a number between 0-11 for  |
 |                |                | the amount of pence.             |
 |                |                |                                  |
+| 10 10 word     | 1 1 1          | Please enter a number.           |
+|                |                |                                  |
+| 1 1 1          | word 2 10      | Please enter a number.           |
+|                |                |                                  |
+|                |                |                                  |
 
