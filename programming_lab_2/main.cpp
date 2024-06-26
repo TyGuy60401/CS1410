@@ -54,17 +54,20 @@ using namespace std;
 
 
 struct sterling {
+	// make the sterling
 	int pounds;
 	int shillings;
 	int pence;
 };
 
 int SterlingValue(sterling strl) {
+	// get the total value
 	return strl.pounds * 12 * 20 + strl.shillings * 12 + strl.pence;
 }
 
 sterling MakeSterling(int pence) {
 	sterling newSterling;
+	// didn't use modulo operator, don't know which one is faster
 	newSterling.pounds = pence / (12 * 20);
 	newSterling.shillings = (pence - (newSterling.pounds * 12 * 20)) / 12;
 	newSterling.pence = pence - (newSterling.pounds * (12 * 20)) - (newSterling.shillings * 12);
@@ -72,6 +75,7 @@ sterling MakeSterling(int pence) {
 }
 
 sterling MakeSterling(int pounds, int shillings, int pence) {
+	// use the other makesterling to make sure that there are no imbalanced values for shillings and pence
 	sterling newSterling;
 	newSterling.pounds = pounds;
 	newSterling.shillings = shillings;
@@ -92,12 +96,16 @@ void Print(sterling& strl) {
 }
 
 sterling Read() {
+	// declare variables
 	int in1, in2, in3;
 	bool usePence = false;
 
+	// get user input
 	cout << "Input 1 number to input amount as pence. Enter anything non-numeric on second prompt." << endl;
 	cout << "Input 3 numbers to input amount as pounds shillings pence." << endl;
 	cout << ">> ";
+
+	// while loops to allow user to fix input in the middle of the program execution.
 	while (true) {
 		cin >> in1;
 		if (cin.fail()) {
@@ -106,6 +114,7 @@ sterling Read() {
 			cout << "Please enter a positive number." << endl;
 			continue;
 		}
+		// ensure the right range
 		if (in1 < 0) {
 			cout << "Please enter a positive number." << endl;
 			continue;
@@ -121,12 +130,14 @@ sterling Read() {
 			usePence = true;
 			break;
 		}
+		// ensure the right range
 		if (in2 >= 20 || in2 < 0) {
 			cout << "Input a number between 0-19 for the amount of shillings." << endl;
 			continue;
 		}
 		break;
 	}
+	// only get the value of the third input if the user did input a number at the second prompt
 	if (!usePence) {
 		while (true) {
 			cout << ">> ";
@@ -136,6 +147,7 @@ sterling Read() {
 				cin.ignore(10000, '\n');
 				cout << "Please enter a number." << endl;
 				continue;
+			// ensure the right range
 			} else if (in3 >= 12 || in3 < 0) {
 				cout << "Input a number between 0-11 for the amount of pence." << endl;
 				continue;
@@ -149,26 +161,30 @@ sterling Read() {
 }
 
 int main() {
+	// Intro
 	cout << "Today we are going to be using the sterling adder." << endl;
 	cout << "Input two shillings and I'll print out the result." << endl;
+
+	// get user input
 	sterling strl1 = Read();
 	sterling strl2 = Read();
 
+	// echo user input
 	cout << "You input these: ";
 	Print(strl1);
 	cout << " and ";
 	Print(strl2);
 	cout << endl;
 
+	// add the result
 	sterling sumStrl = AddSterling(strl1, strl2);
 	cout << "The sum of these 2 sterlings is ";
 	Print(sumStrl);
 	cout << endl;
 
+	// graceful close
 	cout << "Thanks for using the sterling adder!";
-
-
-
 	cout << endl;
+
 	return 0;
 }
