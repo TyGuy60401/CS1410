@@ -27,13 +27,12 @@ int main() {
 	newMouse.growMouse(-1);
 
 	// Jerry practices growing
-	// Mouse Jerry(35);
-	// Jerry.printMouse("Jerry");
-	// Jerry.growMouse();
-	// Jerry.printMouse("Jerry");
-	// Jerry.growMouse(10);
-	// Jerry.printMouse("Jerry");
+	Mouse Jerry(35);
+	Jerry.printMouse("Jerry");
+	Jerry.growMouse();
+	Jerry.printMouse("Jerry");
+	Jerry.growMouse(10);
+	Jerry.printMouse("Jerry");
 
-	// Jerry
 }
 
