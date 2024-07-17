@@ -1,6 +1,7 @@
 /*
  * Name: Ty Davis
  * Desc: Your turn 7.1.2 - Vehicle
+ * Initializing classes with variables and overloading the initialization functions
  *
  *
  *

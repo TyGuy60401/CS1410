@@ -1,6 +1,8 @@
 /*
  * Name: Ty Davis
  * Desc: Your turn 7.1.8 - Mouse
+ * Using setters and getters to modify
+ * the growth rate of mouse objects
  *
  *
  *
