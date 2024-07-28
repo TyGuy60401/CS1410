@@ -1,3 +1,5 @@
+#include <iostream>
+
 long int gcd(long int u, long int v);
 
 class Fraction {
@@ -34,5 +36,8 @@ public:
 	friend Fraction operator/ (Fraction lhs, Fraction rhs);
 	friend Fraction operator/ (Fraction lhs, int rhs);
 	friend Fraction operator/ (int lhs,      Fraction rhs);
+
+	friend std::ostream& operator<< (std::ostream& out, Fraction &frac);
+	friend std::istream& operator>> (std::istream& out, Fraction &frac);
 };
 

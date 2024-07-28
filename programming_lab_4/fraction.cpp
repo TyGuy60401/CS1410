@@ -151,12 +151,18 @@ Fraction operator/ (Fraction lhs, Fraction rhs) { return lhs.div(rhs); }
 Fraction operator/ (Fraction lhs, int rhs)      { return lhs.div(Fraction(rhs)); }
 Fraction operator/ (int lhs,      Fraction rhs) { return Fraction(lhs).div(rhs); }
 
+ostream& operator<< (ostream& out, Fraction &frac) {
+	out << frac.numerator << "/" << frac.denominator;
+	return out;
+}
+
 
 void Fraction::print() {
 	cout << numerator << "/" << denominator;
 }
 
-void Fraction::read() {
+// void Fraction::read() {
+istream& operator>> (istream& in, Fraction &frac) {
 	string errString = "Bad input";
 	long int num;
 	long int den;
@@ -166,23 +172,23 @@ void Fraction::read() {
 		try {
 			// get the numerator
 			cout << "Numerator: ";
-			cin >> num;
-			if (cin.fail()) {
+			in >> num;
+			if (in.fail()) {
 				throw errString;
 			}
-			cin.clear();
-			cin.ignore(10000, '\n');
+			in.clear();
+			in.ignore(10000, '\n');
 
 			// get the denominator
 			cout << "Denominator: ";
-			cin >> den;
-			if (cin.fail()) {
+			in >> den;
+			if (in.fail()) {
 				throw errString;
 			} else if (den == 0) {
 				throw den;
 			}
-			cin.clear();
-			cin.ignore(10000, '\n');
+			in.clear();
+			in.ignore(10000, '\n');
 
 		} catch (long int) {
 			cout << "Enter a non-zero number for the denominator." << endl;
@@ -191,14 +197,16 @@ void Fraction::read() {
 			cout << "Error: " << err << endl;
 			cout << "Enter a valid response" << endl;
 			valid = false;
-			cin.clear();
-			cin.ignore(10000, '\n');
+			in.clear();
+			in.ignore(10000, '\n');
 		}
 
 	} while (!valid);
-	numerator = num;
-	denominator = den;
-	this->reduce();
+	frac.numerator = num;
+	frac.denominator = den;
+	frac.reduce();
+
+	return in;
 }
 
 

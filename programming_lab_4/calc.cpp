@@ -1,6 +1,6 @@
 /*
  * Name: Ty Davis
- * Desc: Programming Lab 3 - Fractions
+ * Desc: Programming Lab 4 - Fraction overloading
  * Fractions
  * Small program for arithmetic with fraction
  * objects. Look at fraction.cpp for psuedocode
@@ -96,21 +96,13 @@ int main() {
 	// graceful welcome
 	cout << "Welcome to the fraction calculator!" << endl;
 
-	cout << "A bit of testing stuff right now" << endl;
-	Fraction tempFrac = Fraction(6, 8);
-	Fraction tempFrac2 = Fraction(20, 40);
+	Fraction tempFrac(7, 8);
+	int x = 7;
 
-	Fraction result = tempFrac - tempFrac2;
-	Fraction result2 = tempFrac - 6;
-	Fraction result3 = 6 - tempFrac2;
-	result.print();
-	cout << endl;
-	result2.print();
-	cout << endl;
-	result3.print();
-	cout << endl;
-	
-	cout << endl << "Done testing..." << endl;
+	Fraction resultTemp = tempFrac + x;
+	cout << resultTemp << endl;
+
+	cout << "END TESTING" << endl;
 
 	// do this until the user exits
 	while (true) {
@@ -125,13 +117,13 @@ int main() {
 		// first fraction input
 		cout << "Input the numerator and denominator for the first fraction." << endl;
 		Fraction frac1;
-		frac1.read();
+		cin >> frac1;
 		cout << endl;
 
 		// second fraction input
 		cout << "Input the numerator and denominator for the second fraction." << endl;
 		Fraction frac2;
-		frac2.read();
+		cin >> frac2;
 		cout << endl;
 
 		Fraction result;
@@ -140,19 +132,19 @@ int main() {
 		try {
 			switch (userAction) {
 				case ADD:
-					result = frac1.add(frac2);
+					result = frac1 + frac2;
 					opStr = "+";
 					break;
 				case SUB:
-					result = frac1.sub(frac2);
+					result = frac1 - frac2;
 					opStr = "-";
 					break;
 				case MULT:
-					result = frac1.mult(frac2);
+					result = frac1 * frac2;
 					opStr = "×";
 					break;
 				case DIV:
-					result = frac1.div(frac2);
+					result = frac1 / frac2;
 					opStr = "÷";
 					break;
 				default:
@@ -170,13 +162,8 @@ int main() {
 		}
 
 		// print out the results
-		frac1.print();
-		cout << " " << opStr << " ";
-		frac2.print();
-		cout << " = ";
-		result.print();
-		cout << endl << endl;
-
+		cout << frac1 << " " << opStr << " " << frac2;
+		cout << " = " << result << endl << endl;
 	};
 
 	return 0;
